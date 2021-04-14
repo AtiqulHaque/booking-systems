@@ -7,8 +7,13 @@ Such as
 2. JWT token Authentication.
 3. Api Documentation.
 4. Docker and Docker compose file.
-5. Postman Collection
+5. Postman Collection.
 6  Unite Test.
+
+
+**Internal diagram**
+![booking_system.png](https://eastceylon.com/images/2021/04/14/booking_system.png)
+
 
 **Instruction**
 
