@@ -7,7 +7,7 @@ Such as
 2. JWT token Authentication.
 3. Api Documentation.
 4. Docker and Docker compose file.
-5. Postman Collection
+5. Postman Collection.
 6  Unite Test.
 
 **Instruction**
