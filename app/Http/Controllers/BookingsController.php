@@ -43,6 +43,39 @@ class BookingsController extends BaseController
     }
 
     /**
+     * @OA\Post(
+     *      path="/book/room",
+     *      operationId="BookingRoom",
+     *      tags={"Booking"},
+     *      summary="Book rooms",
+     *      description="Book rooms",
+     *      * @OA\RequestBody(
+     *          required=true,
+     *          description="Pass user credentials",
+     *          @OA\JsonContent(
+     *                  required={"room_id","user_id", "room_number"},
+     *                  @OA\Property(property="room_id", type="string", example="rooom id"),
+     *                  @OA\Property(property="user_id", type="string", example="15471"),
+     *                  @OA\Property(property="room_number", type="string", example="room_number"),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
+
+
+    /**
      * Display a listing of the resource.
      *
      * @param Request $request
@@ -62,6 +95,38 @@ class BookingsController extends BaseController
 
         return $this->sendApiError($data['html']);
     }
+
+
+    /**
+     * @OA\Post(
+     *      path="/checkin",
+     *      operationId="CheckIN",
+     *      tags={"Booking"},
+     *      summary="Room check in",
+     *      description="Room check in",
+     *      * @OA\RequestBody(
+     *          required=true,
+     *          description="Pass user credentials",
+     *          @OA\JsonContent(
+     *                  required={"room_id","user_id"},
+     *                  @OA\Property(property="room_id", type="string", example="rooom id"),
+     *                  @OA\Property(property="user_id", type="string", example="15471"),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
 
     public function checkin(Request $request)
     {
@@ -84,6 +149,37 @@ class BookingsController extends BaseController
         return $this->sendApiError($data['html']);
     }
 
+    /**
+     * @OA\Post(
+     *      path="/checkout",
+     *      operationId="checkout",
+     *      tags={"Booking"},
+     *      summary="Room check out",
+     *      description="Room check out",
+     *      * @OA\RequestBody(
+     *          required=true,
+     *          description="Pass the room information",
+     *          @OA\JsonContent(
+     *                  required={"room_id","user_id"},
+     *                  @OA\Property(property="room_id", type="string", example="rooom id"),
+     *                  @OA\Property(property="user_id", type="string", example="15471"),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
+
     public function checkout(Request $request)
     {
         $user = \JWTAuth::user();
@@ -101,6 +197,28 @@ class BookingsController extends BaseController
         return $this->sendApiError($data['html']);
     }
 
+
+    /**
+     * @OA\Get(
+     *      path="/booking/list",
+     *      operationId="bookinglist",
+     *      tags={"Booking"},
+     *      summary="Room booking list",
+     *      description="Room booking list",
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
 
     public function bookingList(Request $request)
     {

@@ -34,10 +34,19 @@ class ApiController extends BaseController
     /**
      * @OA\Post(
      *      path="/login",
-     *      operationId="storeProject",
-     *      tags={"Projects"},
-     *      summary="Store new project",
-     *      description="Returns project data",
+     *      operationId="login",
+     *      tags={"Authentication"},
+     *      summary="Login to the project",
+     *      description="Login to the project",
+     *      * @OA\RequestBody(
+     *          required=true,
+     *          description="Pass user credentials",
+     *          @OA\JsonContent(
+     *                  required={"email","password"},
+     *                  @OA\Property(property="email", type="string", format="email", example="user1@mail.com"),
+     *                  @OA\Property(property="password", type="string", format="password", example="PassWord12345"),
+     *          ),
+     *      ),
      *      @OA\Response(
      *          response=400,
      *          description="Bad Request"
@@ -85,6 +94,36 @@ class ApiController extends BaseController
         ]);
     }
 
+
+    /**
+     * @OA\Post(
+     *      path="/logout",
+     *      operationId="logout",
+     *      tags={"Authentication"},
+     *      summary="Logout from auth session",
+     *      description="Logout from auth session",
+     *      * @OA\RequestBody(
+     *          required=true,
+     *          description="Pass user credentials",
+     *          @OA\JsonContent(
+     *                  required={"token"},
+     *                  @OA\Property(property="token", type="string", example="jwt token"),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -110,6 +149,41 @@ class ApiController extends BaseController
             ], 500);
         }
     }
+
+
+    /**
+     * @OA\Post(
+     *      path="/register",
+     *      operationId="register",
+     *      tags={"Authentication"},
+     *      summary="Register Or create user for the sysytem",
+     *      description="Register Or create user for the sysytem",
+     *      * @OA\RequestBody(
+     *          required=true,
+     *          description="Pass user information",
+     *          @OA\JsonContent(
+     *                  required={"first_name","last_name","email", "password"},
+     *                  @OA\Property(property="first_name", type="string", format="email", example="Atiqul"),
+     *                  @OA\Property(property="last_name", type="string", format="string", example="Haque"),
+     *                  @OA\Property(property="email", type="string", format="email", example="user1@mail.com"),
+     *                  @OA\Property(property="password", type="string", format="password", example="PassWord12345"),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
+
 
     /**
      * @param RegistrationFormRequest $request

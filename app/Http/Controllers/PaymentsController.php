@@ -52,6 +52,38 @@ class PaymentsController extends BaseController
     }
 
 
+    /**
+     * @OA\Post(
+     *      path="/booking/payment",
+     *      operationId="pyemnt",
+     *      tags={"Payment"},
+     *      summary="Room check in payment",
+     *      description="Room check in payment",
+     *      * @OA\RequestBody(
+     *          required=true,
+     *          description="Pass the room information",
+     *          @OA\JsonContent(
+     *                  required={"booking_id","user_id", "amount"},
+     *                  @OA\Property(property="booking_id", type="string", example="booking_id"),
+     *                  @OA\Property(property="amount", type="float", example="860.30"),
+     *                  @OA\Property(property="user_id", type="string", example="15471"),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
+
     public function payment(Request $request)
     {
         $user = \JWTAuth::user();

@@ -33,5 +33,21 @@ Without docker you can install this project by this
 php artisan migrate --seed
 
 
+***Run any composer command***
+
+docker-compose exec app composer list
+
+***Run any command***
+
+docker-compose exec php artisan _____
+
+
+***Publish Documentation***
+
+docker-compose exec app php artisan l5-swagger:generate
+
+<a href="https://ibb.co/hfvQdKN"><img src="https://i.ibb.co/4dxvSjL/booking-system-doc.png" alt="booking-system-doc" border="0"></a>
+
+
 
 
