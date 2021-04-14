@@ -1,17 +1,16 @@
-Name : Md.Atiqul Haque
-Email : mailtoatiqul@gmail.com
 
+I you have docker and docker compose install in your pc
+then just goto the project root folder then run this command
 
-php artisan migrate --seed
-
-OR
+./lunch
 
 Also you can create by Docker command
+ 
+ docker-compose up -d
 
-docker-compose up -d 
-
-OR 
-run ./lunch 
+Without docker you can install this project by this 
+ 
+php artisan migrate --seed
 
 
 
