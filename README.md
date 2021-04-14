@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 **Purpose of this project**
 
 its a very tiny little booking system or you can say it  starter project of laravel. if any one initialize a backend API
