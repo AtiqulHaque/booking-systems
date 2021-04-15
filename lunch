@@ -19,6 +19,12 @@ echo "Generating key ..."
 
 $GENERATE_KEY
 
+GENERATE_JWT_KEY="docker-compose exec app php artisan jwt:secret"
+
+echo "Generating JWT secret key ..."
+
+$GENERATE_JWT_KEY
+
 
 
 
