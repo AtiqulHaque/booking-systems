@@ -65,6 +65,17 @@ services:
       - redis-data:/data
     networks:
       - app-network
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      - db_my
+    environment:
+      ADMINER_DESIGN: arcs-material
+    ports:
+      - "8085:8080"
+    networks:
+      - app-network
 #Docker Networks
 networks:
   app-network:

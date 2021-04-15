@@ -25,6 +25,12 @@ echo "Generating JWT secret key ..."
 
 $GENERATE_JWT_KEY
 
+GENERATE_JWT_KEY="docker-compose exec app php artisan migrate --seed"
+
+echo "Generating table and seeds"
+
+$GENERATE_JWT_KEY
+
 
 
 
