@@ -72,7 +72,7 @@ class BookingService implements BookingServiceContract
 
     public function checkIn($roomId, $userId)
     {
-        $this->validator->setBookingRules();
+        $this->validator->setCherckIn();
 
         if (!$this->validator->with([
             'room_id' => $roomId,
@@ -94,7 +94,7 @@ class BookingService implements BookingServiceContract
             ];
         } else{
             return [
-                "status" => 'success',
+                "status" => 'error',
                 'data' => $response
             ];
         }
@@ -102,8 +102,20 @@ class BookingService implements BookingServiceContract
 
     public function checkOut($roomId, $userId)
     {
-        $details = \App::make(BookingServiceContract::class)
-            ->getBookingDetailsByRoomId($roomId, $userId);
+        $this->validator->setCherckOut();
+
+        if (!$this->validator->with([
+            'room_id' => $roomId,
+            'user_id' => $userId
+        ])->passes()) {
+            return [
+                'html'   => "Booking validation errors",
+                'status' => 'validation-error',
+                'error'  => $this->validator->errors()->messages()
+            ];
+        }
+
+        $details = $this->bookingRepo->bookingDetailsByRoomId($roomId, $userId);
 
         if(!empty($details)){
             $payment = $this->bookingRepo->find($details->id);
