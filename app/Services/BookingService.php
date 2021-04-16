@@ -41,7 +41,6 @@ class BookingService implements BookingServiceContract
 
     public function bookRoom(array $params = array())
     {
-
         $this->validator->setBookingRules();
 
         if (!$this->validator->with($params)->passes()) {
@@ -65,7 +64,7 @@ class BookingService implements BookingServiceContract
             ];
         } else{
             return [
-                "status" => 'success',
+                "status" => 'error',
                 'data' => $params
             ];
         }
